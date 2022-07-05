@@ -13,7 +13,7 @@ class Log extends React.Component
         this.conn = props.conn
         if (this.conn) {
             this.conn.onmessage = (evt) => {
-                let message = evt.data
+                let message = JSON.parse(evt.data)
                 this.AddMessage(message)
             };
 
@@ -40,19 +40,33 @@ class Log extends React.Component
         })
     }
 
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }
+      
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+    
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
     render(){
-        /// TODO: Add bootstrap css
         let messages
         if (this.state.messages.length > 0) {
             messages = this.state.messages.map((message, idx) =>
-                <div key={idx} class="card bg-secondary text-light">
-                    {message}
+                <div key={idx} class="MessageCard card bg-secondary text-light">
+                    <p><b>{message.Sender} @{message.Time}:</b> {message.Content}</p>
                 </div>
             )
         }
         return <>
-            <div id="MessageLog" class="card bg-dark text-light border border-primary">
+            <div class="MessageLog card bg-dark text-light border border-primary">
                 {messages}
+                <div style={{ float:"left", clear: "both" }}
+                    ref={(el) => { this.messagesEnd = el; }}>
+                </div>
             </div>
         </>
     }

@@ -24,12 +24,12 @@ class App extends React.Component
     if (this.state.conn === undefined || this.state.name === undefined) {
       content = <ConnectScreen submit={this.onConnect}/>
     } else {
-      content = <div>
+      content = <>
         <h1>Davies Chat Room!</h1>
         <h3>Chatting as {this.state.name}</h3>
         <Log conn={this.state.conn}/>
         <MessageInput conn={this.state.conn}/>
-      </div>;
+      </>;
     }
 
     return <div className="App">
