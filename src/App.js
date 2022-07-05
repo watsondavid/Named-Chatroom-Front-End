@@ -1,22 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Log from './Log';
+import MessageInput from './MessageInput';
+import React from 'react';
 
-function App() {
+/// TODO: move to a new file
+
+function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Davies Chat Room!</h1>
+        <h3>Come say 'Hello'!</h3>
+        <Log conn={props.conn}/>
+        <MessageInput conn={props.conn}/>
       </header>
     </div>
   );

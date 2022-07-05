@@ -1,0 +1,11 @@
+#MessageInput {
+    width: 90%;
+}
+
+input[type="text"] {
+    width: 80%;
+}
+
+input[type="submit"] {
+    width: 20%
+}
