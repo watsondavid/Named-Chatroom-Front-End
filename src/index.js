@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 let conn
-if (window["WebSocket"]) {
-  conn = new WebSocket("ws://" + document.location.host + "/api/connect");
+if (!window["WebSocket"]) {
+  alert("Browser not supported :(");
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
